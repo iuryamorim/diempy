@@ -4,7 +4,9 @@ Django==1.9.7
 python-decouple==3.0
 static3==0.7.0
 gunicorn==19.4.1
-psycopg2==2.6.1
 django-extensions==1.6.1
 django-test-without-migrations==0.4
+pycpfcnpj
+cymysql
+django-cymysql
 pytz

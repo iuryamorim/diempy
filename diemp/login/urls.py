@@ -1,9 +1,8 @@
 from django.conf.urls import url
 
-from diemp.aluno.views import new, call_logout, import_csv
+from diemp.login.views import new, call_logout
 
 urlpatterns = [
     url(r'^$', new, name='login'),
-    url(r'^logout/$', call_logout),
-    url(r'^(\w+)/$', import_csv, name='import'),
+    url(r'^logout/$', call_logout, name='logout'),
 ]

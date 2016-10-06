@@ -1,16 +1,11 @@
 from django.contrib import admin
-from diemp.aluno.models import Inscricao, PessoaCurso
-
-
-class InscricaoModelAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'cpf')
-    search_fields = ('nome', 'cpf')
+from diemp.aluno.models.model_aluno import Inscricao
+from diemp.aluno.models.model_curso import Curso
+from diemp.aluno.models.model_pessoacurso import PessoaCurso
+from diemp.aluno.admins.admin_aluno import InscricaoModelAdmin
+from diemp.aluno.admins.admin_curso import CursosModelAdmin
+from diemp.aluno.admins.admin_pessoacurso import PessoaCursoModelAdmin
 
 admin.site.register(Inscricao, InscricaoModelAdmin)
-
-class PessoaCursoModelAdmin(admin.ModelAdmin):
-    list_display = ('Aluno', 'Curso')
-    search_fields = ('Aluno', 'Curso')
-
+admin.site.register(Curso, CursosModelAdmin)
 admin.site.register(PessoaCurso, PessoaCursoModelAdmin)
-

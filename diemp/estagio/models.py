@@ -1,15 +1,23 @@
 from django.db import models
+from diemp.aluno.models.model_aluno import Inscricao
+from diemp.empresa.models.model_convenio import Convenio
 
+class Estagio(models.Model):
+    data_inicio_vigencia = models.DateField(db_column='Data_Inicio_Vigencia')
+    data_fim_vigencia = models.DateField(db_column='Data_Fim_Vigencia')
+    data_rescisao = models.DateField(db_column='Data_Rescisao', blank=True, null=True)
+    id_aluno = models.ForeignKey(Inscricao, db_column='id_aluno', name='Aluno')
+    id_convenio = models.ForeignKey(Convenio, db_column='id_convenio', name='Convenio')
+    estado = models.CharField(db_column='Estado', max_length=10, choices = [('Em Andamento', 'Em Andamento'), ('Terminado', 'Terminado'), ('Aguardando Documentos', 'Aguardando Documentos'), ('Termo Aditivo', 'Termo Aditivo'), ('Cancelado', 'Cancelado')])
 
-class Curso(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    nome = models.CharField(db_column='Nome', max_length=255)  # Field name made lowercase.
-    unidade = models.CharField(db_column='Unidade', max_length=100)  # Field name made lowercase.
-    cod_curso = models.CharField(db_column='Cod_Curso', max_length=50)  # Field name made lowercase.
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        if self.data_inicio_vigencia > self.data_fim_vigencia:
+            raise ValidationError('A data de início deve ser menor que a de fim')
 
     class Meta:
         managed = False
-        db_table = 'Curso'
-        verbose_name_plural = 'cursos'
-        verbose_name = 'curso'
-        ordering = ('-id',)
+        db_table = 'estagio'
+        verbose_name_plural = 'estagios'
+        verbose_name = 'estagio'
+        ordering = ('-data_inicio_vigencia',)

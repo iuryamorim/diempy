@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'diemp.core',
-    'diemp.empresa.apps.InscricaoConfig',
+    'diemp.login.apps.LoginUsuario',
+    'diemp.aluno.apps.AlunoConfig',
+    'diemp.empresa.apps.EmpresaConfig',
+    'diemp.estagio.apps.EstagioConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -80,10 +83,15 @@ WSGI_APPLICATION = 'diemp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-
 DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl)
+    'default': {
+        'ENGINE': config('BD_ENGINE'),
+        'NAME': config('BD_NAME'),
+        'USER': config('BD_USER'),
+        'PASSWORD': config('BD_PASSWORD'),
+        'HOST': config('BD_HOST'),
+        'PORT': config('BD_PORT'),
+    }
 }
 
 
@@ -118,7 +126,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/

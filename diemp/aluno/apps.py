@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class InscricaoConfig(AppConfig):
-    name = 'diemp.empresa'
-    verbose_name = 'Empresas cadastradas'
+class AlunoConfig(AppConfig):
+    name = 'diemp.aluno'
+    verbose_name = 'Alunos cadastrados'

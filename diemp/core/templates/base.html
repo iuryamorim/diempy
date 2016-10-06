@@ -31,10 +31,15 @@
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 		        <ul class="nav navbar-nav navbar-right">
-					<li><a href="">Login</a></li>
-					<li><a href="#cadastro-aluno">Cadastro de alunos</a></li>
+					<!--<li><a href="#cadastro-aluno">Cadastro de alunos</a></li>
 					<li><a href="#cadastro-vagas">Cadastro de vagas</a></li>
-					<li><a href="/empresa/">Cadastro de empresas</a></li>
+					<li><a href="/empresa/">Cadastro de empresas</a></li>-->
+                    {% if not request.user.is_authenticated %}
+                        <li><a href="{% url 'login:login' %}">Login</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login:logout' %}">Sair</a></li>
+                    {% endif %}
+
 		        </ul>
 	        </div>
 	      </div>
@@ -69,8 +74,8 @@
                         <li class="li-home"><a href="/">Home</a></li>
                         <li class="li-barra">|</li>
                         <li><a href="/contatos/">Contatos</a></li>
-                            <li class="li-barra">|</li>
-                            <li class="li-termos"><a href="/termos/">Termos de Uso</a></li>
+                        <!--<li class="li-barra">|</li>
+                        <li class="li-termos"><a href="/termos/">Termos de Uso</a></li>-->
 
                     </ul>
                 </nav>
@@ -91,6 +96,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+
     {% block script %}
     {% endblock script %}
 

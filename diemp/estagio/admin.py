@@ -1,11 +1,18 @@
 from django.contrib import admin
-from diemp.curso.models import Curso
+from diemp.estagio.models import Estagio
 
 
-class CursosModelAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'unidade')
-    search_fields = ('nome', 'unidade')
+class EstagiosModelAdmin(admin.ModelAdmin):
+    list_display = ('Aluno', 'Convenio')
+    search_fields = ('Aluno', 'Convenio')
 
+    def related_estagio(self, obj):
+        return obj.id_aluno.nome
+        related_estagio.short_description = 'Estagio'
 
-admin.site.register(Curso, CursosModelAdmin)
+    def related_convenio(self, obj):
+        return obj.id_convenio.numero
+        related_convenio.short_description = 'Convenio'
+
+admin.site.register(Estagio, EstagiosModelAdmin)
 
