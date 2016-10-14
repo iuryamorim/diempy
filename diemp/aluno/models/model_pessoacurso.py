@@ -10,4 +10,4 @@ class PessoaCurso(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'Pessoa__Curso'
+        db_table = 'pessoa__curso'
