@@ -37,7 +37,7 @@ class Inscricao(models.Model):
 
         verbose_name_plural = 'alunos'
         verbose_name = 'aluno'
-        ordering = ('-id',)
+        ordering = ('nome',)
 
     def __str__(self):
         return self.nome

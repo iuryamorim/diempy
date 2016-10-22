@@ -4,7 +4,7 @@ from diemp.empresa.models.model_empresa import Empresa
 class Convenio(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True)
     numero = models.CharField(db_column='Numero', unique=True, max_length=10)
-    id_empresa = models.ForeignKey(Empresa, db_column='id_empresa', name='Empresa')
+    id_empresa = models.ForeignKey(Empresa, db_column='id_empresa', verbose_name="empresa")
     data_inicio = models.DateField(max_length=11)
     data_fim = models.DateField(max_length=11)
 
@@ -19,7 +19,7 @@ class Convenio(models.Model):
         db_table = 'convenio'
         verbose_name_plural = 'convenios'
         verbose_name = 'convenio'
-        ordering = ('-data_inicio',)
+        ordering = ('id_empresa__nome',)
 
     def __str__(self):
-        return self.numero
+        return self.id_empresa.nome

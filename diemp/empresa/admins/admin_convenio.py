@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-
 class ConveniosModelAdmin(admin.ModelAdmin):
-    list_display = ('Empresa', 'numero')
-    search_fields = ('Empresa', 'numero')
+    list_display = ('id_empresa', 'numero')
+    search_fields = ('id_empresa__nome', 'numero')
 
     def related_empresa(self, obj):
         return obj.id_empresa.nome

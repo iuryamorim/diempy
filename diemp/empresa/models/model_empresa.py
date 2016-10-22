@@ -13,7 +13,7 @@ class Empresa(models.Model):
         db_table = 'empresa'
         verbose_name_plural = 'empresas'
         verbose_name = 'empresa'
-        ordering = ('-numero',)
+        ordering = ('nome',)
 
     def __str__(self):
         return self.nome

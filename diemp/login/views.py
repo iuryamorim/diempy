@@ -4,6 +4,7 @@ from django.shortcuts import render, resolve_url as r
 
 from diemp.login.forms import LoginForm
 
+
 def new(request):
     if not request.user.is_authenticated():
         if request.method == 'POST':

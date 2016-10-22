@@ -12,7 +12,7 @@ class Curso(models.Model):
         db_table = 'Curso'
         verbose_name_plural = 'cursos'
         verbose_name = 'curso'
-        ordering = ('-id',)
+        ordering = ('nome',)
 
     def __str__(self):
         return self.nome
