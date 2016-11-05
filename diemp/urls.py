@@ -19,8 +19,8 @@ from django.contrib import admin
 from diemp.core.views import home
 
 urlpatterns = [
-    url(r'^diemp', home),
-    url(r'^aluno-diemp/', include('diemp.aluno.urls', namespace='aluno')),
-    url(r'^login-diemp/', include('diemp.login.urls', namespace='login')),
-    url(r'^admin-diemp/', admin.site.urls),
+    url(r'^$', home),
+    url(r'^aluno/', include('diemp.aluno.urls', namespace='aluno')),
+    url(r'^login/', include('diemp.login.urls', namespace='login')),
+    url(r'^admin/', admin.site.urls),
 ]
