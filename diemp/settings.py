@@ -35,6 +35,7 @@ DEFAULT_FROM_EMAIL = 'contato@contato.com.br'
 # Application definition
 
 INSTALLED_APPS = [
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

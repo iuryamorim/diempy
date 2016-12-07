@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^diemp/', home),
     url(r'^aluno-diemp/', include('diemp.aluno.urls', namespace='aluno')),
     url(r'^login-dimep/', include('diemp.login.urls', namespace='login')),
+    url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^admin-dimep/', admin.site.urls),
 ]

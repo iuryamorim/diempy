@@ -10,3 +10,4 @@ pycpfcnpj
 cymysql
 django-cymysql
 pytz
+django-jet=1.0.4
