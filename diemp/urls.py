@@ -14,14 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
+#from django.contrib import admin
 
-from diemp.core.views import home
+#from diemp.core.views import home
 
 urlpatterns = [
-    url(r'^diemp/', home),
+    #url(r'^diemp/', home),
+    url(r'^diemp/', include('diemp.core.urls')),
     url(r'^aluno-diemp/', include('diemp.aluno.urls', namespace='aluno')),
-    url(r'^login-dimep/', include('diemp.login.urls', namespace='login')),
+    url(r'^login-diemp/', include('diemp.login.urls', namespace='login')),
     url(r'^jet/', include('jet.urls', 'jet')),
-    url(r'^admin-dimep/', admin.site.urls),
+    #url(r'^admin-dimep/', admin.site.urls),
 ]
