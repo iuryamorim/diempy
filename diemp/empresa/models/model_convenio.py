@@ -2,7 +2,6 @@ from django.db import models
 from diemp.empresa.models.model_empresa import Empresa
 
 class Convenio(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)
     numero = models.CharField(db_column='Numero', unique=True, max_length=10)
     id_empresa = models.ForeignKey(Empresa, db_column='id_empresa', verbose_name="empresa")
     data_inicio = models.DateField(max_length=11)
@@ -15,8 +14,6 @@ class Convenio(models.Model):
 
 
     class Meta:
-        managed = False
-        db_table = 'convenio'
         verbose_name_plural = 'convenios'
         verbose_name = 'convenio'
         ordering = ('id_empresa__nome',)

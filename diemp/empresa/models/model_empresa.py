@@ -9,8 +9,6 @@ class Empresa(models.Model):
 
 
     class Meta:
-        managed = False
-        db_table = 'empresa'
         verbose_name_plural = 'empresas'
         verbose_name = 'empresa'
         ordering = ('nome',)

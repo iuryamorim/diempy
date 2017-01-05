@@ -17,8 +17,6 @@ class Estagio(models.Model):
             raise ValidationError('A data de início deve ser menor que a de fim')
 
     class Meta:
-        managed = False
-        db_table = 'estagio'
         verbose_name_plural = 'estagios'
         verbose_name = 'estagio'
         ordering = ('-data_inicio_vigencia',)

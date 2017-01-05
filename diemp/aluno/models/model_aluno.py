@@ -4,7 +4,6 @@ from diemp.aluno.validators import validate_cpf
 
 
 class Inscricao(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)
     nome = models.CharField(db_column='Nome', max_length=100)
     email = models.CharField(db_column='Email', max_length=150, blank=True, null=True)
     cpf = models.CharField(db_column='Cpf', unique=True, max_length=20, validators=[validate_cpf])
@@ -32,9 +31,6 @@ class Inscricao(models.Model):
 
 
     class Meta:
-        managed = False
-        db_table = 'Pessoa'
-
         verbose_name_plural = 'alunos'
         verbose_name = 'aluno'
         ordering = ('nome',)

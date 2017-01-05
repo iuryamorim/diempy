@@ -8,6 +8,3 @@ class PessoaCurso(models.Model):
     id_curso = models.ForeignKey(Curso, db_column='ID_CURSO', verbose_name='Curso')
     id_pessoa = models.ForeignKey(Inscricao, db_column='Id_Pessoa',  verbose_name='Aluno')
 
-    class Meta:
-        managed = False
-        db_table = 'pessoa__curso'
