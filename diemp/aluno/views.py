@@ -26,8 +26,10 @@ def create(request):
         form = ImportForm(request.POST, request.FILES)
         if not form.is_valid():
             return render(request, 'aluno/import_csv.html', {'form': form})
+
+        handle_files(request)
         try:
-            handle_files(request)
+            pass
         except:
             return render(request, 'aluno/import_csv.html', {'form': form, 'error': True})
         return render(request, 'aluno/import_csv.html', {'form': form, 'success': True})
@@ -96,8 +98,8 @@ def handle_files(request):
             if objpessoacurso:
                 if (objpessoacurso.id_curso == obj_curso.pk):
                     continue
-
-            obj_ps = PessoaCurso(Curso=obj_curso, Aluno=obj, Matrícula=MATRICULA)
+            
+            obj_ps = PessoaCurso(nome_curso=obj_curso, nome_aluno=obj, matricula=MATRICULA)
             obj_ps.save()
         else:
             cont += 1
