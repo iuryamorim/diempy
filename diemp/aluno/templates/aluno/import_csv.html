@@ -14,7 +14,7 @@
             {% if success %}
                 <div class="alert alert-success">Arquivo Importado com Sucesso!!!</div>
             {% elif error %}
-                <div class="alert alert-danger">Este arquivo não tem um programa importado!!!</div>
+                <div class="alert alert-danger">Este arquivo não pode ser importado!!!</div>
             {% endif %}
              <form method="post" enctype="multipart/form-data">
                  {% csrf_token %}
