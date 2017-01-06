@@ -27,7 +27,6 @@ def create(request):
         if not form.is_valid():
             return render(request, 'aluno/import_csv.html', {'form': form})
 
-        
         try:
             handle_files(request)
         except:
@@ -40,7 +39,7 @@ def handle_files(request):
     f = TextIOWrapper(request.FILES['file'].file, encoding=request.encoding)
     reader = csv.DictReader(f)
     for row in reader:
-                
+       
         for r in row.keys():
             if row[r] == 'NULL':
                 row[r] = None                    

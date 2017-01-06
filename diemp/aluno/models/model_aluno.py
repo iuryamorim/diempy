@@ -6,7 +6,7 @@ from diemp.aluno.validators import validate_cpf
 class Inscricao(models.Model):
     nome = models.CharField(db_column='Nome', max_length=100)
     email = models.CharField(db_column='Email', max_length=150, blank=True, null=True)
-    cpf = models.CharField(db_column='Cpf', unique=True, max_length=20, validators=[validate_cpf])
+    cpf = models.CharField(db_column='Cpf', unique=True, max_length=20, validators=[validate_cpf], null=True)
     dt_nasc = models.DateField(db_column='Dt_Nasc', blank=True, null=True)
     situacao = models.CharField(db_column='Situacao', max_length=25, blank=True, null=True)
     ddi_residencial = models.IntegerField(db_column='Ddi_Residencial', blank=True, null=True)
