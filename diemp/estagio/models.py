@@ -9,7 +9,7 @@ class Estagio(models.Model):
     #data_aditivo = models.DateField(db_column='Data_Aditivo', blank=True, null=True)
     id_aluno = models.ForeignKey(Inscricao, db_column='id_aluno', verbose_name='Aluno')
     id_convenio = models.ForeignKey(Convenio, db_column='id_convenio', verbose_name='Convenio')
-    estado = models.CharField(db_column='Estado', max_length=10, choices = [('Em Andamento', 'Em Andamento'), ('Terminado', 'Terminado'), ('Aguardando Documentos', 'Aguardando Documentos'), ('Termo Aditivo', 'Termo Aditivo'), ('Cancelado', 'Cancelado')])
+    estado = models.CharField(db_column='Estado', max_length=150, choices = [('Em Andamento', 'Em Andamento'), ('Terminado', 'Terminado'), ('Aguardando Documentos', 'Aguardando Documentos'), ('Termo Aditivo', 'Termo Aditivo'), ('Cancelado', 'Cancelado')])
 
     def clean(self):
         from django.core.exceptions import ValidationError
