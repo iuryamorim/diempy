@@ -26,6 +26,7 @@ def create(request):
         form = ImportForm(request.POST, request.FILES)
         if not form.is_valid():
             return render(request, 'aluno/import_csv.html', {'form': form})
+
         try:
             handle_files(request)
         except:
@@ -82,12 +83,17 @@ def handle_files(request):
         except:
             obj_curso = Curso.objects.create(cod_curso=is_none(row['COD_CURSO']),
                                 unidade=is_none(row['UNIDADE']), nome=is_none(row['CURSO']))
+
         try:
-            objpessoacurso = PessoaCurso.objects.get(id_pessoa=obj.pk)
+            objpessoacurso = PessoaCurso.objects.filter(nome_aluno__pk=obj.pk)
         except:
             objpessoacurso = None
+
         if objpessoacurso:
-            if (objpessoacurso.id_curso == obj_curso.pk):
+            lis = list()
+            for valueobj in objpessoacurso:
+                lis.append(valueobj.nome_curso.pk)
+            if (obj_curso.pk in lis):
                 continue
         
         obj_ps = PessoaCurso(nome_curso=obj_curso, nome_aluno=obj, matricula=is_none(row['MATRICULA']))
